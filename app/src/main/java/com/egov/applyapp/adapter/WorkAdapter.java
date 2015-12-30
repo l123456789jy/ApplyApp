@@ -1,5 +1,6 @@
 package com.egov.applyapp.adapter;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.egov.applyapp.contex.ApplicationData;
 import com.egov.applyapp.utiles.LogUtil;
 import com.egov.applyapp.view.NoScrollGridView;
 import me.relex.circleindicator.CircleIndicator;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
 /**
  * 作者：liujingyuan on 2015/12/29 13:42
@@ -19,7 +21,13 @@ import me.relex.circleindicator.CircleIndicator;
  * 工作页面的适配器
  */
 public class WorkAdapter extends BaseAdapter<WorkAdapter.ItemViewHolder> {
+    private final FragmentActivity activity;
     WorkPagerAdapter mworkPagerAdapter;
+
+
+    public WorkAdapter(FragmentActivity activity) {
+        this.activity=activity;
+    }
 
 
     @Override
@@ -103,6 +111,11 @@ public class WorkAdapter extends BaseAdapter<WorkAdapter.ItemViewHolder> {
 
         }if (itemViewType == IS_NORMAL){
             mLayoutUtil.drawViewLayout(holder.add_rl,0f,0.068f,0f,0.02f);
+            holder.add_rl.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    EasyImage.openGallery(activity);
+                }
+            });
         }
     }
 

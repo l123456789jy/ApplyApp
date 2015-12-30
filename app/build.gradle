@@ -18,6 +18,9 @@ android {
                     'proguard-rules.pro'
         }
     }
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
     task clean(type: Exec) {
         ext.lockhunter = '\"C:\\LockHunter.exe\"'
         def buildDir = file(new File("build"))
@@ -44,4 +47,10 @@ dependencies {
     compile 'com.android.support:support-v4:22.2.1'
     compile 'me.relex:circleindicator:1.1.7@aar'
     compile 'com.getbase:floatingactionbutton:1.10.1'
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.3@aar') {
+        transitive = false
+    }
+    compile ('com.github.jkwiecien:EasyImage:1.1.2'){
+        transitive = false
+    }
 }

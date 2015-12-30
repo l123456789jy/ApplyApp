@@ -1,20 +1,22 @@
 package com.egov.applyapp;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.egov.applyapp.ui.fragment.SimpleFragmentPagerAdapter;
-import com.egov.applyapp.utiles.LayoutUtil;
 import com.egov.applyapp.utiles.ToastUtils;
 
 /**
@@ -26,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @InjectView(R.id.sliding_tabs) TabLayout mSlidingTabs;
     @InjectView(R.id.appbar) AppBarLayout mAppbar;
     @InjectView(R.id.viewpager) ViewPager mViewpager;
-    @InjectView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
     private SimpleFragmentPagerAdapter pagerAdapter;
-    LayoutUtil mLayoutUtil = new LayoutUtil();
 
 
     @Override protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
      * 初始化内容
      */
     private void initCount() {
+
         pagerAdapter = new SimpleFragmentPagerAdapter(
                 getSupportFragmentManager(), this);
         mViewpager.setAdapter(pagerAdapter);
@@ -141,5 +142,32 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK) { //监控/拦截/屏蔽返回键
+            showBasicNoTitle();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    public void showBasicNoTitle() {
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
+                 builder
+                .content(R.string.exit)
+                .positiveText(R.string.sure)
+                .negativeText(R.string.cnacle)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog,
+                                        @NonNull DialogAction which) {
+                        //退出程序
+                        System.exit(0);
+                    }
+                })
+                .show();
     }
 }
