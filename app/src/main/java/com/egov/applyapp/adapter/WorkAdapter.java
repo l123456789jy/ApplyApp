@@ -13,7 +13,6 @@ import com.egov.applyapp.contex.ApplicationData;
 import com.egov.applyapp.utiles.LogUtil;
 import com.egov.applyapp.view.NoScrollGridView;
 import me.relex.circleindicator.CircleIndicator;
-import pl.aprilapps.easyphotopicker.EasyImage;
 
 /**
  * 作者：liujingyuan on 2015/12/29 13:42
@@ -111,9 +110,10 @@ public class WorkAdapter extends BaseAdapter<WorkAdapter.ItemViewHolder> {
 
         }if (itemViewType == IS_NORMAL){
             mLayoutUtil.drawViewLayout(holder.add_rl,0f,0.068f,0f,0.02f);
+            //添加应用
             holder.add_rl.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    EasyImage.openGallery(activity);
+
                 }
             });
         }

@@ -7,4 +7,6 @@
     <string name="exit">你确定要退出？</string>
     <string name="sure">确定</string>
     <string name="cnacle">取消</string>
+    <string name="title_activity_apply">ApplyActivity</string>
+    <string name="apply">报销</string>
 </resources>

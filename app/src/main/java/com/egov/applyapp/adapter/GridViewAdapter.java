@@ -1,9 +1,12 @@
 package com.egov.applyapp.adapter;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.egov.applyapp.R;
+import com.egov.applyapp.contex.ApplicationData;
+import com.egov.applyapp.ui.fragment.activity.ApplyActivity;
 import com.egov.applyapp.utiles.LayoutUtil;
 
 /**
@@ -48,7 +51,15 @@ public class GridViewAdapter extends android.widget.BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         initLocation(holder);
-
+        //进入报销系统
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                Intent mIntent=new Intent(ApplicationData.context,
+                        ApplyActivity.class);
+                mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ApplicationData.context.startActivity(mIntent);
+            }
+        });
         return convertView;
     }
 

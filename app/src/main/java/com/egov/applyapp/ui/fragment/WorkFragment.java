@@ -1,6 +1,5 @@
 package com.egov.applyapp.ui.fragment;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,10 +9,6 @@ import butterknife.InjectView;
 import com.egov.applyapp.R;
 import com.egov.applyapp.adapter.WorkAdapter;
 import com.egov.applyapp.base.BaseFragment;
-import com.egov.applyapp.utiles.ToastUtils;
-import java.io.File;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,25 +57,6 @@ public class WorkFragment extends BaseFragment {
     @Override protected void isGone() {
 
     }
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(),
-                new DefaultCallback() {
-                    @Override
-                    public void onImagePickerError(Exception e, EasyImage.ImageSource source) {
-                    }
-
-
-                    @Override
-                    public void onImagePicked(File imageFile, EasyImage.ImageSource source) {
-                        ToastUtils.show(imageFile.getPath() + "");
-                    }
-                });
-    }
-
 
     @Override public void onDestroyView() {
         super.onDestroyView();

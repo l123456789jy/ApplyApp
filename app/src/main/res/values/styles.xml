@@ -8,13 +8,16 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+
+    <style name="MyCustomTabLayout"
+        parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">#0088ce</item>
         <item name="tabSelectedTextColor">#0088ce</item>
         <item name="tabIndicatorHeight">3dp</item>
         <item name="tabTextAppearance">@style/MyCustomTextAppearance</item>
         <item name="tabBackground">@color/title_actbar_color</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -26,13 +29,14 @@
     <style name="AppTheme.PopupOverlay"
         parent="ThemeOverlay.AppCompat.Light"/>
     <!-- Base application theme.设置滑动的字体的样式 -->
-    <style
-        name="CustomTabLayoutTextAppearance"
+    <style name="CustomTabLayoutTextAppearance"
         parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
+
+    <style name="MyCustomTextAppearance"
+        parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
     </style>
 
