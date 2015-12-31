@@ -32,7 +32,8 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/universal-image-loader-1.9.2-with-sources.jar')
     testCompile 'com.squareup.okhttp:mockwebserver:2.5.0'
-    compile('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') exclude module: 'support-v4'
+    compile(
+            'cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') exclude module: 'support-v4'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
@@ -51,4 +52,5 @@ dependencies {
         transitive = false
     }
     compile 'com.bigkoo:alertview:1.0.2'
+    compile project(':pickphotos')
 }
