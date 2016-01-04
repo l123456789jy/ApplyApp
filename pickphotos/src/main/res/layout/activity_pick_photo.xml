@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@android:color/black"
-    tools:context="me.crosswall.photo.pick.PickPhotosActiviy">
+  >
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"

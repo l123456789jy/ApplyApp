@@ -91,7 +91,9 @@ public class PickPhotosActiviy extends AppCompatActivity implements PhotoView {
 
         UIUtil.setTranslucentStatusColor(this,colorPrimary);
       //  setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //显示ActionBar的返回按钮
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.photos);
         toolbar.setBackgroundResource(colorPrimary);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             Window window = getWindow();
@@ -100,7 +102,9 @@ public class PickPhotosActiviy extends AppCompatActivity implements PhotoView {
         }
 
         recyclerView.setLayoutManager(bindGridLayoutManager(spanCount));
-        thumbPhotoAdapter = new ThumbPhotoAdapter(this,spanCount,maxPickSize,pickMode,toolbar);
+
+        //相册图片的适配器
+        thumbPhotoAdapter = new ThumbPhotoAdapter(this,spanCount,maxPickSize,pickMode,getSupportActionBar());
         recyclerView.setAdapter(thumbPhotoAdapter);
         albumPopupWindow = new AlbumPopupWindow(this);
         albumPopupWindow.setAnchorView(mPopupAnchorView);
@@ -184,6 +188,7 @@ public class PickPhotosActiviy extends AppCompatActivity implements PhotoView {
         int itemId = item.getItemId();
         if(itemId==android.R.id.home){
             finish();
+        //确定获取照片
         }else if(itemId==R.id.action_finish){
             ArrayList<String> selectedImages = thumbPhotoAdapter.getSelectedImages();
             if(selectedImages.size()==0){

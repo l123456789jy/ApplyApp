@@ -2,16 +2,13 @@ package me.crosswall.photo.pick.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
 import me.crosswall.photo.pick.PickConfig;
 import me.crosswall.photo.pick.model.Photo;
 import me.crosswall.photo.pick.widget.ThumbPhotoView;
@@ -25,11 +22,11 @@ public class ThumbPhotoAdapter extends RecyclerView.Adapter<ThumbPhotoAdapter.Th
     private Activity context;
     private List<Photo> photos = new ArrayList<>();
     private int width;
-    private Toolbar toolbar;
+    private ActionBar toolbar;
     private ArrayList<String> selectedImages = new ArrayList<>();
     private int maxPickSize;
     private int pickMode;
-    public ThumbPhotoAdapter(Activity context, int spanCount, int maxPickSize, int pickMode, Toolbar toolbar){
+    public ThumbPhotoAdapter(Activity context, int spanCount, int maxPickSize, int pickMode, ActionBar toolbar){
         this.context = context;
         this.width   = context.getResources().getDisplayMetrics().widthPixels / spanCount;
         this.maxPickSize = maxPickSize;

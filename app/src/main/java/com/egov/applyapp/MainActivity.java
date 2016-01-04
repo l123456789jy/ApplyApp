@@ -24,7 +24,6 @@ import com.egov.applyapp.utiles.ToastUtils;
  */
 public class MainActivity extends AppCompatActivity {
     int postion = 0;
-    @InjectView(R.id.toolbar) Toolbar mToolbar;
     @InjectView(R.id.sliding_tabs) TabLayout mSlidingTabs;
     @InjectView(R.id.appbar) AppBarLayout mAppbar;
     @InjectView(R.id.viewpager) ViewPager mViewpager;
