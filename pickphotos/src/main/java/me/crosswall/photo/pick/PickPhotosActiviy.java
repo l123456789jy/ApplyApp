@@ -174,6 +174,9 @@ public class PickPhotosActiviy extends AppCompatActivity implements PhotoView {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_CANCELED){
+            return;
+        }
         //照相返回的，回调到调用着
         if (requestCode==10){
             selectedImages.add(PickConfig.FILE_PATH);
