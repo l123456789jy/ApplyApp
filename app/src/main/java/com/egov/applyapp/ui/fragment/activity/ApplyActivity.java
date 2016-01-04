@@ -41,6 +41,11 @@ public class ApplyActivity extends BaseActivity {
         goBack(ApplyActivity.this, mToolbar);
 
     }
+
+
+    /**
+     * 打开相册
+     */
     @OnClick(R.id.open_camer_bt) void openPhotos(){
         new PickConfig.Builder(this)
                 .pickMode(PickConfig.MODE_MULTIP_PICK)
@@ -58,7 +63,6 @@ public class ApplyActivity extends BaseActivity {
         if(resultCode!=RESULT_OK){
             return;
         }
-
         if(requestCode==PickConfig.PICK_REQUEST_CODE){
             ArrayList<String> pick = data.getStringArrayListExtra(PickConfig.EXTRA_STRING_ARRAYLIST);
             Toast.makeText(this,"pick size:"+pick.size(),Toast.LENGTH_SHORT).show();

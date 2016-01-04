@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import me.crosswall.photo.pick.util.PhoneUtil;
 
 /**
  * Created by yuweichen on 15/12/10.
@@ -37,6 +38,9 @@ public class PickConfig {
     public final static String EXTRA_SHOW_GIF      = "extra_show_gif";
     public final static String EXTRA_CURSOR_LOADER = "extra_cursor_loader";
     public final static String EXTRA_CHECK_IMAGE   = "extra_check_image";
+    public final static String FILE_PATH= PhoneUtil.getSDPath()+"/image/"+"1" +
+            ".jpg";
+
 
     private final int spanCount;
     private final int pickMode;

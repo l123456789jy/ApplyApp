@@ -83,7 +83,7 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
         tv.setText(tabTitles[position]);
         ImageView img = (ImageView) view.findViewById(R.id.imageView);
         img.setImageResource(imageResId[position]);
-        mLayoutUtil.drawViewLayout(img,0.027f,0.0156f,0f,0f);
+        mLayoutUtil.drawViewLayout(img,0.027f,0.0156f,0.01f,0f);
         mImageViewList.add(img);
         mTextViewList.add(tv);
         return view;

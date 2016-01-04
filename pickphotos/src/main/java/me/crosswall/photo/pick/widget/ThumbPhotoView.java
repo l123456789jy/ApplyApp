@@ -18,7 +18,9 @@ import me.crosswall.photo.pick.util.UriUtil;
  * Created by yuweichen on 15/12/9.
  */
 public class ThumbPhotoView extends RelativeLayout{
+    ImageView open_came_iv;
 
+    RelativeLayout rl;
 
     ImageView photo_thumbview;
 
@@ -46,6 +48,8 @@ public class ThumbPhotoView extends RelativeLayout{
         photo_thumbview = (ImageView) view.findViewById(R.id.photo_thumbview);
         photo_thumbview_selected = (ImageView) view.findViewById(R.id.photo_thumbview_selected);
         photo_thumbview_position = (TextView) view.findViewById(R.id.photo_thumbview_position);
+        open_came_iv = (ImageView) view.findViewById(R.id.open_came_iv);
+        rl = (RelativeLayout) view.findViewById(R.id.rl);
     }
 
 
@@ -70,11 +74,15 @@ public class ThumbPhotoView extends RelativeLayout{
     public void toggleSelect(int queuePosition){
        // Logger.d("queuePosition:"+queuePosition);
         if(queuePosition==0){
+            rl.setVisibility(View.GONE);
+            open_came_iv.setVisibility(View.VISIBLE);
             photo_thumbview_position.setText("");
             photo_thumbview_position.setVisibility(GONE);
         }else{
-            photo_thumbview_position.setVisibility(VISIBLE);
-            photo_thumbview_position.setText(String.valueOf(queuePosition));
+            rl.setVisibility(View.VISIBLE);
+            open_came_iv.setVisibility(View.GONE);
+           /* photo_thumbview_position.setVisibility(VISIBLE);
+            photo_thumbview_position.setText(String.valueOf(queuePosition));*/
         }
     }
 

@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK) { //监控/拦截/屏蔽返回键
+        if (keyCode == KeyEvent.KEYCODE_BACK) { //监控/拦截/屏蔽返回键
             showBasicNoTitle();
             return true;
         }
@@ -155,18 +155,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void showBasicNoTitle() {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
-                 builder
-                .content(R.string.exit)
-                .positiveText(R.string.sure)
-                .negativeText(R.string.cnacle)
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog,
-                                        @NonNull DialogAction which) {
-                        //退出程序
-                        System.exit(0);
-                    }
-                })
-                .show();
+        builder.content(R.string.exit)
+               .positiveText(R.string.sure)
+               .negativeText(R.string.cnacle)
+               .onPositive(new MaterialDialog.SingleButtonCallback() {
+                   @Override
+                   public void onClick(
+                           @NonNull MaterialDialog dialog,
+                           @NonNull DialogAction which) {
+                       //退出程序
+                       System.exit(0);
+                   }
+               })
+               .show();
     }
 }

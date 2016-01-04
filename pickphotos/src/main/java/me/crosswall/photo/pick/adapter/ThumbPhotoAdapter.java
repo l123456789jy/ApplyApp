@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import me.crosswall.photo.pick.PickConfig;
 import me.crosswall.photo.pick.model.Photo;
+import me.crosswall.photo.pick.util.PhoneUtil;
 import me.crosswall.photo.pick.widget.ThumbPhotoView;
 
 
@@ -26,6 +27,7 @@ public class ThumbPhotoAdapter extends RecyclerView.Adapter<ThumbPhotoAdapter.Th
     private ArrayList<String> selectedImages = new ArrayList<>();
     private int maxPickSize;
     private int pickMode;
+    private final int FIRST=0;
     public ThumbPhotoAdapter(Activity context, int spanCount, int maxPickSize, int pickMode, ActionBar toolbar){
         this.context = context;
         this.width   = context.getResources().getDisplayMetrics().widthPixels / spanCount;
@@ -87,7 +89,8 @@ public class ThumbPhotoAdapter extends RecyclerView.Adapter<ThumbPhotoAdapter.Th
 
             thumbPhotoView.setLayoutParams(new FrameLayout.LayoutParams(width,width));
             thumbPhotoView.loadData(imageInfo.getPath(),pickMode);
-
+            thumbPhotoView.toggleSelect(position);
+            thumbPhotoView.setTag(position+"");
             if(selectedImages.contains(imageInfo.getPath())){
                 thumbPhotoView.showSelected(true);
             }else{
@@ -99,7 +102,13 @@ public class ThumbPhotoAdapter extends RecyclerView.Adapter<ThumbPhotoAdapter.Th
             thumbPhotoView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    //用户点击第一个就代表是拍照，调用相机
+                    if (Integer.parseInt(thumbPhotoView.getTag().toString())
+                            ==FIRST){
+                        PhoneUtil.toTakePhoto(10,context,PickConfig
+                                .FILE_PATH);
+                    return;
+                    }
                     if(pickMode == PickConfig.MODE_SINGLE_PICK){
                         selectedImages.clear();
                         selectedImages.add(path);

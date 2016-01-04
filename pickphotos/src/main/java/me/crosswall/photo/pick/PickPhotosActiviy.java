@@ -19,10 +19,8 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import me.crosswall.photo.pick.adapter.ThumbPhotoAdapter;
 import me.crosswall.photo.pick.model.PhotoDirectory;
 import me.crosswall.photo.pick.presenters.PhotoPresenterImpl;
@@ -35,7 +33,7 @@ import me.crosswall.photo.pick.widget.AlbumPopupWindow;
  * Created by yuweichen on 15/12/8.
  */
 public class PickPhotosActiviy extends AppCompatActivity implements PhotoView {
-
+    private ArrayList<String> selectedImages = new ArrayList<>();
     Toolbar toolbar;
     RecyclerView recyclerView;
     TextView btn_category;
@@ -171,6 +169,21 @@ public class PickPhotosActiviy extends AppCompatActivity implements PhotoView {
         albumPopupWindow.addData(photoDirectories);
 
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //照相返回的，回调到调用着
+        if (requestCode==10){
+            selectedImages.add(PickConfig.FILE_PATH);
+            Intent intent = new Intent();
+            intent.putStringArrayListExtra(PickConfig.EXTRA_STRING_ARRAYLIST,selectedImages);
+            setResult(RESULT_OK,intent);
+            finish();
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
